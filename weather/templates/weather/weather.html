@@ -1,0 +1,61 @@
+{% extends './base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <!-- Header - set the background image for the header in the line below-->
+  <header class="py-5 bg-image-full" style="background-image: url('{% static 'images/backgrounds/'|add:returned_weather_data.weather_condition|add:".jpg" %}')">
+      <div class="text-center my-5">
+          <img class="img-fluid mb-4" src="{% static 'images/icons/'|add:returned_weather_data.weather_condition|add:".png" %}" alt="Weather Icon" />
+          <h1 class="text-black fs-2 fw-bolder">{{ returned_weather_data.name }}</h1>
+          <p class="text-black fw-bold fs-5 mb-0">{{ returned_weather_data.weather_condition }}</p>
+      </div>
+  </header>
+  <!-- Content section-->
+  <section class="py-2" style="height: 350px;">
+      <div class="container my-5">
+          <div class="row justify-content-around text-center">
+            <div class="card ms-6 my-3 shadow-lg border-light" style="width: 25rem; height: 15rem;">
+              <div class="card-body d-flex justify-content-around flex-column">
+                <h4 class="card-title pt-5 align-self-center">Today's Temperature</h3>
+                <p class="card-text mb-5 align-self-center" style="font-size: 50px;">{{ returned_weather_data.temp }}&deg;</p>
+              </div>
+            </div>
+
+            <div class="card me-6 my-3 shadow-lg border-light" style="width: 25rem; height: 15rem;">
+              <div class="card-body d-flex justify-content-around flex-column">
+                <h4 class="card-title pt-5 align-self-center">Feels Like</h3>
+                <p class="card-text mb-5 align-self-center" style="font-size: 50px;">{{ returned_weather_data.feels_like_temp }}&deg;</p>
+              </div>
+            </div>
+          </div>
+      </div>
+  </section>
+  <!-- Content section-->
+  <section class="py-2" style="height: 350px;">
+      <div class="container my-5">
+          <div class="row justify-content-around text-center">
+            <div class="card my-3 shadow-lg border-light" style="width: 25rem; height: 15rem;">
+              <div class="card-body d-flex justify-content-around flex-column">
+                <h4 class="card-title pt-5 align-self-center">Today's Low</h3>
+                <p class="card-text mb-5 align-self-center" style="font-size: 50px;">{{ returned_weather_data.low }}&deg;</p>
+              </div>
+            </div>
+
+            <div class="card my-3 shadow-lg border-light" style="width: 25rem; height: 15rem;">
+              <div class="card-body d-flex justify-content-around flex-column">
+                <h4 class="card-title pt-5 align-self-center">Today's High</h3>
+                <p class="card-text mb-5 align-self-center" style="font-size: 50px;">{{ returned_weather_data.high }}&deg;</p>
+              </div>
+            </div>
+
+            <div class="card my-3 shadow-lg border-light" style="width: 25rem; height: 15rem;">
+              <div class="card-body d-flex justify-content-around flex-column">
+                <h4 class="card-title pt-5 align-self-center">Wind Speed</h3>
+                <p class="card-text mb-5 align-self-center" style="font-size: 50px;">{{ returned_weather_data.wind_speed }}<span style="font-size: 20px;">/mph</span></p>
+              </div>
+            </div>                    
+          </div>
+      </div>
+  </section>
+{% endblock content %}
